@@ -1,9 +1,7 @@
-const puppeteer = require('puppeteer-extra');
+const puppeteer = require('puppeteer');
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const StealthPlugin = require('puppeteer-extra-plugin-stealth');
-puppeteer.use(StealthPlugin());
 
 async function getM3u8 (id) {
   const embedUrl = "https://www.rophim.me/xem-phim/"+ id;
