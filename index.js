@@ -5,10 +5,8 @@ const PORT = process.env.PORT || 3000;
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
 
-const mid = 'Etwg8kgy'; // Thay bằng id phim
-const embedUrl = `https://www.rophim.me/xem-phim/bo-5-sieu-dang-cap.Etwg8kgy?ver=1`;
-
-async function getM3u8 () {
+async function getM3u8 (id) {
+  const embedUrl = "https://www.rophim.me/xem-phim/"+ id;
   const browser = await puppeteer.launch({
     headless: true,
     args: ['--no-sandbox'],
@@ -48,7 +46,7 @@ async function getM3u8 () {
 };
 
 app.get('/m3u8', async (req, res) => {
-  const link = await getM3u8();
+  const link = await getM3u8(req.query.mid);
   res.json({ m3u8: link });
 });
 
