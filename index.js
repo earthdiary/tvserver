@@ -52,4 +52,8 @@ app.get('/m3u8', async (req, res) => {
   res.json({ m3u8: link });
 });
 
+app.get('/', async (req, res) => {
+  res.json({ "A": "b" });
+});
+
 app.listen(PORT, () => console.log(`🚀 Server chạy tại http://localhost:${PORT}`));
